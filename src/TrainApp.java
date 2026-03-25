@@ -1,30 +1,47 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+// Bogie class (custom object)
+class Bogie {
+    String name;
+    int capacity;
+
+    // Constructor
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    // Display method
+    public String toString() {
+        return name + " | Capacity: " + capacity;
+    }
+}
 
 public class TrainApp {
 
     public static void main(String[] args) {
 
         System.out.println("=====================================");
-        System.out.println(" UC6 - Map Bogie to Capacity (HashMap) ");
+        System.out.println(" UC7 - Sort Bogies by Capacity ");
         System.out.println("=====================================\n");
 
-        // Create a HashMap
-        // Stores data in key -> value format
-        Map<String, Integer> capacityMap = new HashMap<>();
+        // Create a List of Bogie objects
+        List<Bogie> bogies = new ArrayList<>();
 
-        // --- Insert bogie capacities ---
-        capacityMap.put("Sleeper", 72);
-        capacityMap.put("AC Chair", 60);
-        capacityMap.put("First Class", 24);
+        // Add bogies
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("First Class", 24));
 
-        // Display bogie-capacity mapping
-        System.out.println("Bogie Capacity Details:");
+        // Sort bogies by capacity (ascending order)
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
 
-        // Iterate using entrySet()
-        for (Map.Entry<String, Integer> entry : capacityMap.entrySet()) {
-            System.out.println("Bogie: " + entry.getKey() +
-                    " | Capacity: " + entry.getValue());
+        // Display sorted bogies
+        System.out.println("Bogies Sorted by Capacity:");
+        for (Bogie b : bogies) {
+            System.out.println(b);
         }
     }
 }
