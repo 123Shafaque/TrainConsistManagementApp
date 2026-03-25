@@ -1,32 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TrainApp {
 
     public static void main(String[] args) {
 
-        System.out.println("======================================");
-        System.out.println("   === Train Consist Management App ===");
-        System.out.println("======================================\n");
+        System.out.println("=====================================");
+        System.out.println(" UC3 - Track Unique Bogie IDs ");
+        System.out.println("=====================================\n");
 
-        List<String> passengerBogies = new ArrayList<>();
+        // Create a Set to store unique bogie IDs
+        // HashSet stores only unique values
+        Set<String> bogies = new HashSet<>();
 
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        // --- Add IDs (including duplicates) ---
+        // add() inserts bogie IDs into the set
+        bogies.add("BG101");
+        bogies.add("BG102");
+        bogies.add("BG103");
+        bogies.add("BG104");
 
-        System.out.println("Passenger Bogies after addition: " + passengerBogies);
+        // Duplicate entries (will be ignored automatically)
+        bogies.add("BG101"); // Duplicate
+        bogies.add("BG102"); // Duplicate
 
-        passengerBogies.remove("AC Chair");
+        // Display unique bogie IDs
+        System.out.println("Unique Bogie IDs in Train Consist:");
+        for (String bogie : bogies) {
+            System.out.println(bogie);
+        }
 
-        System.out.println("Passenger Bogies after removal: " + passengerBogies);
-
-        boolean exists = passengerBogies.contains("Sleeper");
-
-        System.out.println("Does Sleeper exist? " + exists);
-
-        System.out.println("Final Train Consist: " + passengerBogies);
-
-        System.out.println("\nSystem ready for operations...");
+        // Optional: Show total unique count
+        System.out.println("\nTotal Unique Bogies: " + bogies.size());
     }
 }
